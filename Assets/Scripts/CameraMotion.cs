@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteAlways]
 public class CameraMotion : MonoBehaviour
 {
     public Transform PlayerTransform;
