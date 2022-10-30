@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     public GameObject Menu;
 
     public GameObject WinScreen;
-    // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -53,8 +54,7 @@ public class GameManager : MonoBehaviour
 
         Score.text = $"Собрано: 0 из {CoinsCount}";
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if ((Mathf.Abs(PlayerTransform.position.z) > HalfWidthGameZone)|| (PlayerTransform.position.y > MaxHeightGameZone))
@@ -135,18 +135,31 @@ public class GameManager : MonoBehaviour
 
         GameMode = 0;
     }
+
     public void NormalStart()
     {
         StartGame();
 
         GameMode = 1;
     }
+
     public void HardStart()
     {
         StartGame();
 
         GameMode = 2;
     }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     void GameComplete()
     {
         WinScreen.SetActive(true);
